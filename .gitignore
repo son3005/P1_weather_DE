@@ -1,0 +1,15 @@
+# Môi trường ảo & cache Python
+.venv/
+__pycache__/
+*.pyc
+
+# Cấu hình chứa mật khẩu nhạy cảm
+.env
+
+# Database local & file nhị phân
+*.duckdb
+*.duckdb.wal
+
+# dbt artifacts
+transform/target/
+transform/dbt_packages/
