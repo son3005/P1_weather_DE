@@ -48,7 +48,7 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 |---|---|---|---|---|---|
 | 0 | Nền móng | 3 | [x] | 2026-11-01 | 2026-11-01 |
 | 0.5 | Python cho DE *(tuỳ chọn)* | 2.5 | [x] | 2026-11-01 | 2026-11-01 |
-| 1 | Bronze — ingestion | 8 | [ ] | | |
+| 1 | Bronze — ingestion | 8 | [x] | 2026-11-02 | 2026-11-02 |
 | 2 | Silver — làm sạch & test | 9 | [ ] | | |
 | 3 | Gold — mô hình hình sao | 7 | [ ] | | |
 | 4 | Serving — publish & BI | 4 | [ ] | | |
@@ -156,20 +156,20 @@ data lake, idempotency, ghi log có cấu trúc, test có mock.
 
 ### Việc cần làm
 
-- [ ] Client gọi API: phân trang theo khoảng ngày, retry có backoff cho 429/5xx, fail ngay với 4xx khác
-- [ ] Đổi JSON lồng nhau thành bảng phẳng; thiếu biến thì điền null, **không** làm chết pipeline
-- [ ] Ghi Parquet vào `bronze/open_meteo/hourly/dt=/run=/`, partition đúng layout
-- [ ] Chạy lại cùng `run_id` thì **ghi đè**, không sinh object mới
-- [ ] `ops.run_log`: `run_id`, `rows_in`, `rows_out`, `started_at`, `duration_ms`, `status`
-- [ ] Backfill 3 năm × 5 thành phố chạy một mạch
-- [ ] Test: JSON thiếu biến; mảng `time` dài hơn mảng số liệu; retry khi gặp 429 (dùng mock, không gọi mạng thật)
+- [x] Client gọi API: phân trang theo khoảng ngày, retry có backoff cho 429/5xx, fail ngay với 4xx khác
+- [x] Đổi JSON lồng nhau thành bảng phẳng; thiếu biến thì điền null, **không** làm chết pipeline
+- [x] Ghi Parquet vào `bronze/open_meteo/hourly/dt=/run=/`, partition đúng layout
+- [x] Chạy lại cùng `run_id` thì **ghi đè**, không sinh object mới
+- [x] `ops.run_log`: `run_id`, `rows_in`, `rows_out`, `started_at`, `duration_ms`, `status`
+- [x] Backfill 3 năm × 5 thành phố chạy một mạch
+- [x] Test: JSON thiếu biến; mảng `time` dài hơn mảng số liệu; retry khi gặp 429 (dùng mock, không gọi mạng thật)
 
 ### DoD
 
-- [ ] Một lệnh chạy được backfill 3 năm, không can thiệp tay
-- [ ] Chạy lại 2 lần liên tiếp: số object trong bucket **không đổi**
-- [ ] `pytest` xanh, có ít nhất 1 test cho nhánh retry
-- [ ] `ops.run_log` có ≥ 3 bản ghi với status khác nhau
+- [x] Một lệnh chạy được backfill 3 năm, không can thiệp tay
+- [x] Chạy lại 2 lần liên tiếp: số object trong bucket **không đổi**
+- [x] `pytest` xanh, có ít nhất 1 test cho nhánh retry
+- [x] `ops.run_log` có ≥ 3 bản ghi với status khác nhau
 
 ### Câu hỏi ra phase
 
@@ -401,6 +401,7 @@ Ghi ra để không bị cám dỗ giữa chừng:
 |---|---|---|---|---|
 | 2026-11-01 | 0 | ~1.5h | Cấu hình WSL2 (6GB), dựng compose Postgres + MinIO (Silo), dbt-duckdb All checks passed, viết ADR 0001 | MinIO Docker Hub bị gỡ (đổi sang pgsty/silo), Anaconda venv bị treo pip SSL (đổi sang conda env) |
 | 2026-11-01 | 0.5 | ~1.0h | Hoàn thành type hint, try/except phân loại lỗi HTTP, logging, viết 4 unit test với pytest, ruff format sạch | Lỗi ModuleNotFoundError src (sửa bằng pytest.ini) |
+| 2026-11-02 | 1 | ~1.0h | Hoàn thành Bronze Ingestion: Client retry 429 backoff, Parser flatten JSON, Parquet MinIO idempotent, ops.run_log Postgres, backfill 131,520 dòng (3 năm x 5 thành phố), 9 unit tests xanh | Lỗi thụt lề raise RuntimeError và test 404 gọi mạng thật (đã sửa bằng Mock) |
 
 ## 10. Quy tắc khi bị kẹt
 
