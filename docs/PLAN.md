@@ -49,7 +49,7 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 | 0 | Nền móng | 3 | [x] | 2026-11-01 | 2026-11-01 |
 | 0.5 | Python cho DE *(tuỳ chọn)* | 2.5 | [x] | 2026-11-01 | 2026-11-01 |
 | 1 | Bronze — ingestion | 8 | [x] | 2026-11-02 | 2026-11-02 |
-| 2 | Silver — làm sạch & test | 9 | [ ] | | |
+| 2 | Silver — làm sạch & test | 9 | [x] | 2026-11-02 | 2026-11-02 |
 | 3 | Gold — mô hình hình sao | 7 | [ ] | | |
 | 4 | Serving — publish & BI | 4 | [ ] | | |
 | 5 | Orchestration — Airflow | 7 | [ ] | | |
@@ -188,23 +188,23 @@ xử lý thời gian, chính sách null.
 
 ### Việc cần làm
 
-- [ ] `sources.yml` khai báo bronze là external, kèm freshness
-- [ ] `stg_`: 1:1 với nguồn, đổi kiểu, đổi tên cột, không logic nghiệp vụ
-- [ ] `int_`: khử trùng lặp theo `(city_code, observed_at)`, giữ bản `_ingested_at` mới nhất
-- [ ] `silver.weather_hourly`: incremental, khoá `md5(city_code||observed_at)`
-- [ ] Tách `observed_at_local` và `observed_at_utc`; ghi rõ múi giờ trong tài liệu model
-- [ ] Đếm null theo từng biến, ghi con số thật vào README
-- [ ] Test: `unique`, `not_null`, `relationships`, `accepted_range` cho độ ẩm 0–100
-- [ ] Một **singular test** mà generic test không làm được (ví dụ: không có giờ nào ở tương lai)
-- [ ] `dbt docs generate` và mở lineage
+- [x] `sources.yml` khai báo bronze là external, kèm freshness
+- [x] `stg_`: 1:1 với nguồn, đổi kiểu, đổi tên cột, không logic nghiệp vụ
+- [x] `int_`: khử trùng lặp theo `(city_code, observed_at)`, giữ bản `_ingested_at` mới nhất
+- [x] `silver.weather_hourly`: incremental, khoá `md5(city_code||observed_at)`
+- [x] Tách `observed_at_local` và `observed_at_utc`; ghi rõ múi giờ trong tài liệu model
+- [x] Đếm null theo từng biến, ghi con số thật vào README
+- [x] Test: `unique`, `not_null`, `relationships`, `accepted_range` cho độ ẩm 0–100
+- [x] Một **singular test** mà generic test không làm được (ví dụ: không có giờ nào ở tương lai)
+- [x] `dbt docs generate` và mở lineage
 
 ### DoD
 
-- [ ] `dbt build` xanh
-- [ ] Chạy 2 lần liên tiếp: `count(*)` của silver không đổi
-- [ ] ≥ 8 test, trong đó ≥ 1 singular test
-- [ ] Lineage trong `dbt docs` cho thấy đường đi bronze → stg → int → silver
-- [ ] README có bảng số dòng và số null thật
+- [x] `dbt build` xanh
+- [x] Chạy 2 lần liên tiếp: `count(*)` của silver không đổi
+- [x] ≥ 8 test, trong đó ≥ 1 singular test
+- [x] Lineage trong `dbt docs` cho thấy đường đi bronze → stg → int → silver
+- [x] README có bảng số dòng và số null thật
 
 ### Câu hỏi ra phase
 
@@ -402,6 +402,7 @@ Ghi ra để không bị cám dỗ giữa chừng:
 | 2026-11-01 | 0 | ~1.5h | Cấu hình WSL2 (6GB), dựng compose Postgres + MinIO (Silo), dbt-duckdb All checks passed, viết ADR 0001 | MinIO Docker Hub bị gỡ (đổi sang pgsty/silo), Anaconda venv bị treo pip SSL (đổi sang conda env) |
 | 2026-11-01 | 0.5 | ~1.0h | Hoàn thành type hint, try/except phân loại lỗi HTTP, logging, viết 4 unit test với pytest, ruff format sạch | Lỗi ModuleNotFoundError src (sửa bằng pytest.ini) |
 | 2026-11-02 | 1 | ~1.0h | Hoàn thành Bronze Ingestion: Client retry 429 backoff, Parser flatten JSON, Parquet MinIO idempotent, ops.run_log Postgres, backfill 131,520 dòng (3 năm x 5 thành phố), 9 unit tests xanh | Lỗi thụt lề raise RuntimeError và test 404 gọi mạng thật (đã sửa bằng Mock) |
+| 2026-11-02 | 2 | ~1.5h | Hoàn thành Silver: sources S3 MinIO, stg casting, int dedup ROW_NUMBER, silver incremental DuckDB (131,520 dòng), 10 data tests (2 singular tests), dbt docs lineage, tạo README.md | Lỗi cú pháp ép kiểu SQL (::), typo YAML accepted_values |
 
 ## 10. Quy tắc khi bị kẹt
 

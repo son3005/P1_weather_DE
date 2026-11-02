@@ -13,3 +13,5 @@ __pycache__/
 # dbt artifacts
 transform/target/
 transform/dbt_packages/
+transform/logs/
+logs/

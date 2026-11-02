@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: "Kho dữ liệu thô (Bronze Data Lake) lưu trữ trên MinIO S3"
+    tables:
+      - name: weather_raw
+        description: "Dữ liệu thời tiết theo giờ dạng Parquet"
+        meta:
+          external_location: "s3://bronze/open_meteo/hourly/*/*/*.parquet"
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after: {count: 7, period: day}
+          error_after: {count: 14, period: day}
+          

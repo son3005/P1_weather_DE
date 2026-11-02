@@ -5,3 +5,15 @@ weather_profile:
       type: duckdb
       path: 'weather.duckdb'
       threads: 2 
+      extensions:
+        - httpfs
+        - parquet
+      secrets:
+        - type: s3
+          provider: config
+          key_id: "miniouser"
+          secret: "minioadmin"
+          region: "us-east-1"
+          endpoint: "localhost:9000"
+          url_style: "path"
+          use_ssl: false

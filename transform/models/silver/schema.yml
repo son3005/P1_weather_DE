@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: weather_hourly
+    description: "Bảng dữ liệu thời tiết theo giờ tầng Silver (đã làm sạch, khử trùng, lặp và phân tách múi giờ)"
+    columns:
+      - name: weather_id
+        description: "Khoá chính thay thế md5(city_code || '_' || observed_at)"
+        tests:
+          - unique
+          - not_null
+      
+      - name: city_code
+        description: "Mã định danh thành phố"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['HAN','SGN','DAD','VCA','HPH']
+      
+      - name: observed_at_utc
+        description: 'Thời gian quan trắc chuẩn UTC'
+        tests:
+          - not_null
+
+      - name: observed_at_local
+        description: "Thời gian quan trắc giờ địa phương Việt Nam"
+        tests:
+          - not_null
+      
+      - name: temperature_2m
+        description: "Nhiệt độ không khí ở độ cao 2m (độ C)"
+        tests:
+          - not_null
+      
+      - name: relative_humidity_2m
+        description: "Độ ẩm tương đối (%)"
+        tests:
+          - not_null
