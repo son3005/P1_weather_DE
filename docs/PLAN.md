@@ -52,7 +52,7 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 | 2 | Silver — làm sạch & test | 9 | [x] | 2026-11-02 | 2026-11-02 |
 | 3 | Gold — mô hình hình sao | 7 | [x] | 2026-11-02 | 2026-11-03 |
 | 4 | Serving — publish & BI | 4 | [x] | 2026-11-03 | 2026-11-03 |
-| 5 | Orchestration — Airflow | 7 | [ ] | | |
+| 5 | Orchestration — Airflow | 7 | [x] | 2026-11-03 | 2026-11-03 |
 | 6 | Reliability — CI & observability | 6 | [ ] | | |
 | 7 | Đóng gói & kể chuyện | 5 | [ ] | | |
 | | **Tổng** | **51.5** | | | |
@@ -280,19 +280,19 @@ kiểm soát đồng thời.
 
 ### Việc cần làm
 
-- [ ] Airflow trong compose, `LocalExecutor`, metadata ở database riêng trong cùng Postgres
-- [ ] DAG 7 bước: ingest → sensor → dbt silver → **test gate** → dbt gold → test → publish
-- [ ] `catchup=False`, `max_active_runs=1`
-- [ ] Retry **chỉ** ở bước ingest (lỗi mạng), không retry ở bước test
-- [ ] Backfill một khoảng ngày bằng CLI
-- [ ] Chứng minh gate hoạt động: cố ý làm hỏng dữ liệu, xem gold không được sinh ra
+- [x] Airflow trong compose, `LocalExecutor`, metadata ở database riêng trong cùng Postgres
+- [x] DAG 7 bước: ingest → sensor → dbt silver → **test gate** → dbt gold → test → publish
+- [x] `catchup=False`, `max_active_runs=1`
+- [x] Retry **chỉ** ở bước ingest (lỗi mạng), không retry ở bước test
+- [x] Backfill một khoảng ngày bằng CLI
+- [x] Chứng minh gate hoạt động: cố ý làm hỏng dữ liệu, xem gold không được sinh ra
 
 ### DoD
 
-- [ ] DAG xanh 2 lần liên tiếp
-- [ ] Backfill một khoảng ngày chạy xong, dữ liệu cũ không bị phá
-- [ ] Ảnh chụp log cho thấy test fail → DAG dừng trước bước gold
-- [ ] Giải thích được vì sao `max_active_runs=1` là bắt buộc với DuckDB
+- [x] DAG xanh 2 lần liên tiếp
+- [x] Backfill một khoảng ngày chạy xong, dữ liệu cũ không bị phá
+- [x] Ảnh chụp log cho thấy test fail → DAG dừng trước bước gold
+- [x] Giải thích được vì sao `max_active_runs=1` là bắt buộc với DuckDB
 
 ### Câu hỏi ra phase
 
@@ -405,6 +405,7 @@ Ghi ra để không bị cám dỗ giữa chừng:
 | 2026-11-02 | 2 | ~1.5h | Hoàn thành Silver: sources S3 MinIO, stg casting, int dedup ROW_NUMBER, silver incremental DuckDB (131,520 dòng), 10 data tests (2 singular tests), dbt docs lineage, tạo README.md | Lỗi cú pháp ép kiểu SQL (::), typo YAML accepted_values |
 | 2026-11-03 | 3 | ~1.5h | Hoàn thành Gold Star Schema: dim_city từ seed, dim_date sinh tự động, fct_weather_hourly tham chiếu 2 dim, 2 bảng agg daily & monthly, 17 data tests (test đối chiếu aggregate khớp fact), exposure dashboard (PASS=26) | Lỗi cú pháp dayofweek, thụt lề YAML relationships |
 | 2026-11-03 | 4 | ~1.0h | Hoàn thành Serving & BI: publish idempotent DuckDB sang Postgres gold (5 bảng), dựng Metabase docker, tạo 5 charts + 1 dashboard, trả lời câu hỏi kinh doanh về lượng mưa Hà Nội 2024, cập nhật README | Lỗi cú pháp ép kiểu weather_id bigint (đã sửa thành varchar) |
+| 2026-11-03 | 5 | ~1.5h | Hoàn thành Orchestration Airflow: cụm standalone LocalExecutor, DAG 7 bước có Quality Gate & retry policy, dbt runner độc lập --no-partial-parse, chạy xanh 2 lần liên tiếp, backfill CLI 14/14 tasks, chụp ảnh chứng minh Quality Gate chặn đứng Gold khi test fail | Lỗi xung đột cổng 8080 (đổi sang 8088), lỗi cache dbt partial_parse giữa host Windows và container Linux |
 
 ## 10. Quy tắc khi bị kẹt
 

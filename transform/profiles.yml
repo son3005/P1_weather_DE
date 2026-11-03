@@ -4,7 +4,7 @@ weather_profile:
     dev:
       type: duckdb
       path: 'weather.duckdb'
-      threads: 2 
+      threads: 1 
       extensions:
         - httpfs
         - parquet
@@ -14,6 +14,6 @@ weather_profile:
           key_id: "miniouser"
           secret: "minioadmin"
           region: "us-east-1"
-          endpoint: "localhost:9000"
+          endpoint: "{{ env_var('MINIO_ENDPOINT_HOST', 'localhost:9000') }}"
           url_style: "path"
           use_ssl: false

@@ -62,6 +62,34 @@ services:
     networks:
       - postgres
 
+  airflow:
+    image: apache/airflow:2.9.3-python3.11
+    container_name: airflow
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:admin@postgres:5432/airflow
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
+      - _PIP_ADDITIONAL_REQUIREMENTS=dbt-duckdb boto3 pyarrow requests psycopg2-binary
+      - PYTHONPATH=/opt/airflow/project
+      - POSTGRES_HOST=postgres
+      - MINIO_ENDPOINT=http://minio:9000
+      - MINIO_ENDPOINT_HOST=minio:9000
+      - DUCKDB_PATH=/opt/airflow/project/transform/weather.duckdb
+    volumes:
+      - ./:/opt/airflow/project
+      - ./dags:/opt/airflow/dags
+      - ./logs/airflow:/opt/airflow/logs
+    ports:
+      - "8088:8080"
+    command: standalone
+    networks:
+      - postgres
+
 networks:
   postgres:
     driver: bridge

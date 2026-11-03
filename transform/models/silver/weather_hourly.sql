@@ -5,7 +5,7 @@
     )
 }}
 WITH deduped AS(
-    SELECT * FROM {{ ref('int_weather_deduped')}}
+    SELECT * FROM {{ ref('int_weather_deduped') }}
 ),
 final AS (
     SELECT

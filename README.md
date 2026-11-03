@@ -114,4 +114,27 @@ Dựa trên kho dữ liệu Star Schema tầng Gold, pipeline đã trả lời c
 - **Tháng khô hạn nhất:** **Tháng 11/2024** chỉ có **`9.8 mm`** lượng mưa và 29 giờ mưa rải rác.
 - **Nhiệt độ cực trị:** Tháng 6 nóng nhất với nhiệt độ trung bình **`29.2 °C`**, tháng 1 lạnh nhất với **`17.8 °C`**.
 
+---
+
+## 6. Điều Phối Tự Động Hóa & Quality Gate (Apache Airflow)
+
+Toàn bộ pipeline được tự động hóa bằng DAG 7 bước trong Apache Airflow (`weather_medallion_dag`):
+
+```text
+ingest (Retries=3) -> sensor -> dbt_silver -> quality_gate_silver (Circuit Breaker) -> dbt_gold -> quality_gate_gold -> publish
+```
+
+### 1. Luồng chạy thành công (All 7 Steps Succeeded):
+![Airflow DAG Success](docs/img/airflow_dag_success.png)
+
+### 2. Cơ chế chốt chặn Quality Gate (Fail-fast Circuit Breaker):
+Khi dữ liệu tầng Silver vi phạm kiểm thử chất lượng dữ liệu (Data Quality Test), pipeline lập tức **dừng khẩn cấp**, chuyển toàn bộ các bước phía sau (`dbt_gold`, `publish`) sang trạng thái `upstream_failed` để ngăn chặn rác lọt vào kho dữ liệu và BI Dashboard:
+![Quality Gate Circuit Breaker](docs/img/quality_gate_failed.png)
+
+### 3. Lệnh Backfill Lịch Sử qua CLI:
+```powershell
+docker exec -it airflow airflow dags backfill weather_medallion_dag --start-date 2024-01-08 --end-date 2024-01-09 -y
+```
+
+
 
