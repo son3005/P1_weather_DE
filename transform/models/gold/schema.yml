@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_weather_hourly
+    description: "Bảng sự kiện thời tiết theo giờ tầng Gold"
+    columns:
+      - name: weather_id
+        tests:
+          - unique
+          - not_null
+
+      - name: city_code
+        description: "Khoá ngoại tham chiếu sang dim_city"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_city')
+              field: city_code
+
+      - name: date_id
+        description: "Khoá ngoại tham chiếu sang dim_date"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_id

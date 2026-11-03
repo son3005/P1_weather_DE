@@ -50,7 +50,7 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 | 0.5 | Python cho DE *(tuỳ chọn)* | 2.5 | [x] | 2026-11-01 | 2026-11-01 |
 | 1 | Bronze — ingestion | 8 | [x] | 2026-11-02 | 2026-11-02 |
 | 2 | Silver — làm sạch & test | 9 | [x] | 2026-11-02 | 2026-11-02 |
-| 3 | Gold — mô hình hình sao | 7 | [ ] | | |
+| 3 | Gold — mô hình hình sao | 7 | [x] | 2026-11-02 | 2026-11-03 |
 | 4 | Serving — publish & BI | 4 | [ ] | | |
 | 5 | Orchestration — Airflow | 7 | [ ] | | |
 | 6 | Reliability — CI & observability | 6 | [ ] | | |
@@ -222,19 +222,19 @@ xử lý thời gian, chính sách null.
 
 ### Việc cần làm
 
-- [ ] Viết **grain bằng một câu tiếng Việt** ở đầu mỗi model trước khi viết SQL (ví dụ: "một dòng = một thành phố trong một giờ")
-- [ ] `dim_city` từ seed, `dim_date` sinh tự động
-- [ ] `fct_weather_hourly` với khoá thay thế, tham chiếu 2 dim
-- [ ] 2 bảng aggregate: theo ngày/thành phố và theo tháng/thành phố
-- [ ] Test quan hệ fact → dim; một test đối chiếu aggregate khớp với fact
-- [ ] Khai báo `exposures` mô tả dashboard sẽ đọc bảng nào
+- [x] Viết **grain bằng một câu tiếng Việt** ở đầu mỗi model trước khi viết SQL (ví dụ: "một dòng = một thành phố trong một giờ")
+- [x] `dim_city` từ seed, `dim_date` sinh tự động
+- [x] `fct_weather_hourly` với khoá thay thế, tham chiếu 2 dim
+- [x] 2 bảng aggregate: theo ngày/thành phố và theo tháng/thành phố
+- [x] Test quan hệ fact → dim; một test đối chiếu aggregate khớp với fact
+- [x] Khai báo `exposures` mô tả dashboard sẽ đọc bảng nào
 
 ### DoD
 
-- [ ] `dbt build` xanh
-- [ ] Tổng số dòng của aggregate theo ngày **khớp** với số ngày trong fact (kiểm bằng query đối chiếu)
-- [ ] Lineage cho thấy fact lấy từ silver, không lấy trực tiếp từ bronze
-- [ ] Mỗi model có grain viết bằng lời ở đầu file
+- [x] `dbt build` xanh
+- [x] Tổng số dòng của aggregate theo ngày **khớp** với số ngày trong fact (kiểm bằng query đối chiếu)
+- [x] Lineage cho thấy fact lấy từ silver, không lấy trực tiếp từ bronze
+- [x] Mỗi model có grain viết bằng lời ở đầu file
 
 ### Câu hỏi ra phase
 
@@ -403,6 +403,7 @@ Ghi ra để không bị cám dỗ giữa chừng:
 | 2026-11-01 | 0.5 | ~1.0h | Hoàn thành type hint, try/except phân loại lỗi HTTP, logging, viết 4 unit test với pytest, ruff format sạch | Lỗi ModuleNotFoundError src (sửa bằng pytest.ini) |
 | 2026-11-02 | 1 | ~1.0h | Hoàn thành Bronze Ingestion: Client retry 429 backoff, Parser flatten JSON, Parquet MinIO idempotent, ops.run_log Postgres, backfill 131,520 dòng (3 năm x 5 thành phố), 9 unit tests xanh | Lỗi thụt lề raise RuntimeError và test 404 gọi mạng thật (đã sửa bằng Mock) |
 | 2026-11-02 | 2 | ~1.5h | Hoàn thành Silver: sources S3 MinIO, stg casting, int dedup ROW_NUMBER, silver incremental DuckDB (131,520 dòng), 10 data tests (2 singular tests), dbt docs lineage, tạo README.md | Lỗi cú pháp ép kiểu SQL (::), typo YAML accepted_values |
+| 2026-11-03 | 3 | ~1.5h | Hoàn thành Gold Star Schema: dim_city từ seed, dim_date sinh tự động, fct_weather_hourly tham chiếu 2 dim, 2 bảng agg daily & monthly, 17 data tests (test đối chiếu aggregate khớp fact), exposure dashboard (PASS=26) | Lỗi cú pháp dayofweek, thụt lề YAML relationships |
 
 ## 10. Quy tắc khi bị kẹt
 

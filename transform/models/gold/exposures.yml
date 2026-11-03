@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+  - name: weather_bi_dashboard
+    label: "Vietnam Weather Metabase Dashboard"
+    type: dashboard
+    maturity: high
+    url: http://localhost:3000
+    description: "Dashboard phân tích xu hướng nhiệt độ, lượng mưa và độ ẩm của 5 thành phố lớn tại Việt Nam"
+    depends_on:
+      - ref('fct_weather_hourly')
+      - ref('agg_weather_daily')
+      - ref('agg_weather_monthly')
+      - ref('dim_city')
+      - ref('dim_date')
+    owner:
+      name: Data Engineering Team
+      email: de@local.domain
