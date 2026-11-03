@@ -87,10 +87,31 @@ pytest -q
 python -m src.ingest --start-date 2022-01-01 --end-date 2024-12-31 --run-id backfill_3years
 ```
 
-### Chạy pipeline dbt Transform (Silver):
+### Chạy pipeline dbt Transform (Silver & Gold):
 ```powershell
 cd transform
 dbt debug --profiles-dir .
 dbt build --profiles-dir .
+cd ..
 ```
+
+### Xuất bản dữ liệu sang Serving Layer (PostgreSQL):
+```powershell
+python -m src.publish
+```
+
+---
+
+## 5. Phân Tích Kinh Doanh & Trực Quan Hóa (BI Dashboard)
+
+![Dashboard Metabase](imgs/dashboard.png)
+
+### Câu hỏi kinh doanh: Phân tích lượng mưa và số giờ mưa tại Thủ đô Hà Nội trong năm 2024
+Dựa trên kho dữ liệu Star Schema tầng Gold, pipeline đã trả lời câu hỏi nghiệp vụ bằng các con số thực tế:
+- **Số giờ mưa trung bình:** Hà Nội có trung bình **`200` giờ mưa / tháng** trong năm 2024 (tổng cộng 2,400 giờ có mưa trên tổng số 8,784 giờ trong cả năm).
+- **Tháng có số giờ mưa nhiều nhất:** **Tháng 7/2024** với **376 giờ mưa**, tiếp theo là **Tháng 9/2024** với **333 giờ mưa**.
+- **Tháng có tổng lượng mưa kỷ lục:** **Tháng 9/2024** đạt đỉnh với **`629.1 mm`** (chiếm gần 24% tổng lượng mưa cả năm do ảnh hưởng trực tiếp của siêu bão Yagi đổ bộ miền Bắc vào đầu tháng 9).
+- **Tháng khô hạn nhất:** **Tháng 11/2024** chỉ có **`9.8 mm`** lượng mưa và 29 giờ mưa rải rác.
+- **Nhiệt độ cực trị:** Tháng 6 nóng nhất với nhiệt độ trung bình **`29.2 °C`**, tháng 1 lạnh nhất với **`17.8 °C`**.
+
 

@@ -51,7 +51,7 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 | 1 | Bronze — ingestion | 8 | [x] | 2026-11-02 | 2026-11-02 |
 | 2 | Silver — làm sạch & test | 9 | [x] | 2026-11-02 | 2026-11-02 |
 | 3 | Gold — mô hình hình sao | 7 | [x] | 2026-11-02 | 2026-11-03 |
-| 4 | Serving — publish & BI | 4 | [ ] | | |
+| 4 | Serving — publish & BI | 4 | [x] | 2026-11-03 | 2026-11-03 |
 | 5 | Orchestration — Airflow | 7 | [ ] | | |
 | 6 | Reliability — CI & observability | 6 | [ ] | | |
 | 7 | Đóng gói & kể chuyện | 5 | [ ] | | |
@@ -253,16 +253,16 @@ nghĩa metric, trả lời một câu hỏi bằng số.
 
 ### Việc cần làm
 
-- [ ] Publish 3 bảng gold sang Postgres (COPY qua extension postgres, hoặc công cụ tương đương)
-- [ ] Publish **idempotent**: chạy 2 lần, số dòng không đổi
-- [ ] Metabase nối Postgres, tạo 3 chart, 1 dashboard
-- [ ] Viết vào README một câu hỏi kinh doanh + câu trả lời **có số cụ thể**
+- [x] Publish 3 bảng gold sang Postgres (COPY qua extension postgres, hoặc công cụ tương đương)
+- [x] Publish **idempotent**: chạy 2 lần, số dòng không đổi
+- [x] Metabase nối Postgres, tạo 3 chart, 1 dashboard
+- [x] Viết vào README một câu hỏi kinh doanh + câu trả lời **có số cụ thể**
 
 ### DoD
 
-- [ ] Ảnh chụp dashboard trong `docs/img/`
-- [ ] Publish chạy 2 lần liên tiếp không nhân đôi dữ liệu
-- [ ] Một câu trả lời dạng: "Hà Nội có trung bình X giờ mưa/tháng trong 2024, cao nhất vào tháng Y"
+- [x] Ảnh chụp dashboard trong `docs/img/`
+- [x] Publish chạy 2 lần liên tiếp không nhân đôi dữ liệu
+- [x] Một câu trả lời dạng: "Hà Nội có trung bình X giờ mưa/tháng trong 2024, cao nhất vào tháng Y"
 
 ### Câu hỏi ra phase
 
@@ -404,6 +404,7 @@ Ghi ra để không bị cám dỗ giữa chừng:
 | 2026-11-02 | 1 | ~1.0h | Hoàn thành Bronze Ingestion: Client retry 429 backoff, Parser flatten JSON, Parquet MinIO idempotent, ops.run_log Postgres, backfill 131,520 dòng (3 năm x 5 thành phố), 9 unit tests xanh | Lỗi thụt lề raise RuntimeError và test 404 gọi mạng thật (đã sửa bằng Mock) |
 | 2026-11-02 | 2 | ~1.5h | Hoàn thành Silver: sources S3 MinIO, stg casting, int dedup ROW_NUMBER, silver incremental DuckDB (131,520 dòng), 10 data tests (2 singular tests), dbt docs lineage, tạo README.md | Lỗi cú pháp ép kiểu SQL (::), typo YAML accepted_values |
 | 2026-11-03 | 3 | ~1.5h | Hoàn thành Gold Star Schema: dim_city từ seed, dim_date sinh tự động, fct_weather_hourly tham chiếu 2 dim, 2 bảng agg daily & monthly, 17 data tests (test đối chiếu aggregate khớp fact), exposure dashboard (PASS=26) | Lỗi cú pháp dayofweek, thụt lề YAML relationships |
+| 2026-11-03 | 4 | ~1.0h | Hoàn thành Serving & BI: publish idempotent DuckDB sang Postgres gold (5 bảng), dựng Metabase docker, tạo 5 charts + 1 dashboard, trả lời câu hỏi kinh doanh về lượng mưa Hà Nội 2024, cập nhật README | Lỗi cú pháp ép kiểu weather_id bigint (đã sửa thành varchar) |
 
 ## 10. Quy tắc khi bị kẹt
 
