@@ -1,13 +1,15 @@
-from datetime import datetime, timezone
-from typing import Any, Dict, List
+from datetime import UTC, datetime
+from typing import Any
+
 from src.config import HOURLY_VARIABLES
 
+
 def flatten_weather_json(
-    raw_json: Dict[str, Any],
+    raw_json: dict[str, Any],
     city_code: str,
     run_id: str,
     source_url: str,
-) -> List[Dict[str, Any]]:
+) -> list[dict[str, Any]]:
     """
     Biến đổi JSON lồng nhau từ Open-Meteo thành danh sách các bản ghi phẳng.
     Bổ sung metadata (_ingested_at, _run_id, _source_url).
@@ -23,7 +25,7 @@ def flatten_weather_json(
 
     lat = raw_json.get("latitude")
     lon = raw_json.get("longitude")
-    ingested_at = datetime.now(timezone.utc).isoformat()
+    ingested_at = datetime.now(UTC).isoformat()
 
     records = []
     total_rows = len(times)

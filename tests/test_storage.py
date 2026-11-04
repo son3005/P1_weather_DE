@@ -1,5 +1,7 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from src.storage import save_records_to_parquet_minio
+
 
 def test_save_records_to_parquet_minio_empty():
     assert save_records_to_parquet_minio([], "bronze", "test.parquet") == 0

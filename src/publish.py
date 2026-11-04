@@ -1,8 +1,9 @@
 import io
 import logging
 import os
+
 import duckdb
-import psycopg2
+
 from src.ops import get_db_connection
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")

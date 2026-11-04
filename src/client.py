@@ -1,17 +1,18 @@
 import logging
 import time
-from typing import Any, Dict
+from typing import Any
+
 import requests
 
 logger = logging.getLogger(__name__)
 
 def fetch_weather_api(
     url: str,
-    params: Dict[str, Any],
+    params: dict[str, Any],
     max_retries: int = 3,
     backoff_factor: float = 1.0,
     timeout: int = 10,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Gọi Open-Meteo API có cơ chế Retry & Exponential Backoff.
     - Retry khi gặp: Timeout, ConnectionError, HTTP 429, HTTP 5xx.

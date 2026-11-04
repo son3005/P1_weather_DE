@@ -1,7 +1,10 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
 import requests
-from unittest.mock import patch, MagicMock
+
 from src.client import fetch_weather_api
+
 
 # 1. Test Fail-fast với Mock: Giả lập server trả về 404 -> Phải ném lỗi ngay, không retry
 def test_fetch_weather_api_404():

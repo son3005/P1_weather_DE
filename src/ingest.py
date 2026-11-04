@@ -1,18 +1,18 @@
 import argparse
 import logging
-from datetime import datetime, timezone
-import time
-from src.config import CITIES, OPEN_METEO_ARCHIVE_URL, HOURLY_VARIABLES
+from datetime import UTC, datetime
+
 from src.client import fetch_weather_api
+from src.config import CITIES, HOURLY_VARIABLES, OPEN_METEO_ARCHIVE_URL
+from src.ops import log_pipeline_run
 from src.parser import flatten_weather_json
 from src.storage import save_records_to_parquet_minio
-from src.ops import log_pipeline_run
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
 def run_ingestion(start_date: str, end_date: str, custom_run_id: str = None) -> str:
-    started_at = datetime.now(timezone.utc)
+    started_at = datetime.now(UTC)
     dt_str = started_at.strftime("%Y-%m-%d")
     run_id = custom_run_id or started_at.strftime("%Y%m%dT%H%M%S")
 
@@ -55,7 +55,7 @@ def run_ingestion(start_date: str, end_date: str, custom_run_id: str = None) -> 
         raise
     finally:
         # Luôn luôn ghi nhận vào ops.run_log dù thành công hay thất bại
-        duration_ms = int((datetime.now(timezone.utc) - started_at).total_seconds() * 1000)
+        duration_ms = int((datetime.now(UTC) - started_at).total_seconds() * 1000)
         log_pipeline_run(
             run_id=run_id,
             rows_in=len(all_records),

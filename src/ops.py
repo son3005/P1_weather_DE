@@ -1,7 +1,8 @@
 import os
-import psycopg2
 from datetime import datetime
-from typing import Optional
+
+import psycopg2
+
 
 def get_db_connection():
     """Kết nối tới Postgres (metadata database)."""

@@ -10,12 +10,13 @@ Luồng thực thi 7 bước:
   7. publish (PythonOperator): Xuất bản dữ liệu Gold sang Serving PostgreSQL (Idempotent)
 """
 
-from datetime import datetime, timedelta, timezone
 import os
 import sys
+from datetime import datetime, timedelta
+
 from airflow import DAG
-from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
 
 # Cấu hình đường dẫn project để import các module trong src/
 PROJECT_DIR = os.getenv("AIRFLOW_PROJECT_DIR", "/opt/airflow/project")

@@ -1,9 +1,11 @@
 import io
 import os
+from typing import Any
+
 import boto3
 import pyarrow as pa
 import pyarrow.parquet as pq
-from typing import Any, Dict, List
+
 
 def get_s3_client():
     """Tạo client kết nối MinIO thông qua chuẩn AWS S3 SDK."""
@@ -14,8 +16,19 @@ def get_s3_client():
         aws_secret_access_key=os.getenv("MINIO_ROOT_PASSWORD", "minioadmin"),
     )
 
+def ensure_bucket_exists(bucket: str = "bronze") -> None:
+    """Tự động tạo bucket nếu chưa tồn tại trên S3/MinIO."""
+    s3_client = get_s3_client()
+    try:
+        s3_client.head_bucket(Bucket=bucket)
+    except Exception:
+        try:
+            s3_client.create_bucket(Bucket=bucket)
+        except Exception:
+            pass
+
 def save_records_to_parquet_minio(
-    records: List[Dict[str, Any]],
+    records: list[dict[str, Any]],
     bucket: str,
     s3_key: str,
 ) -> int:
@@ -26,6 +39,8 @@ def save_records_to_parquet_minio(
     """
     if not records:
         return 0
+
+    ensure_bucket_exists(bucket)
 
     # 1. Chuyển list of dicts thành PyArrow Table
     table = pa.Table.from_pylist(records)

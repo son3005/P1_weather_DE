@@ -22341,3 +22341,354 @@ parsing.
 [0m06:02:17.587304 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ec5aecef6d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ec5aecefb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ec5b320c510>]}
 [0m06:02:17.588984 [debug] [MainThread]: Flushing usage events
 [0m06:02:18.715572 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:22:47.596786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673DC55D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673DB2690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673D0A990>]}
+
+
+============================== 10:22:47.606592 | 4568beb9-19cb-4c4b-8ae3-71b1f614a1b1 ==============================
+[0m10:22:47.606592 [info ] [MainThread]: Running with dbt=1.12.6
+[0m10:22:47.608364 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'printer_width': '80', 'static_parser': 'True', 'partial_parse': 'True', 'introspect': 'True', 'log_path': 'transform\\logs', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'use_colors': 'True', 'profiles_dir': 'transform', 'debug': 'False', 'no_print': 'None', 'hints_enabled': 'True', 'write_json': 'True', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'fail_fast': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'invocation_command': 'dbt test --select dim_city dim_date --project-dir transform --profiles-dir transform', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'log_cache_events': 'False'}
+[0m10:22:48.376545 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4568beb9-19cb-4c4b-8ae3-71b1f614a1b1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673D0A0D0>]}
+[0m10:22:48.454167 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '4568beb9-19cb-4c4b-8ae3-71b1f614a1b1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002366F4234D0>]}
+[0m10:22:48.460949 [info ] [MainThread]: Registered adapter: duckdb=1.11.1
+[0m10:22:49.145516 [debug] [MainThread]: checksum: da7b0b3aa203349304ff6b83ef737adaaba4fb3d68a649742bc8c930afc7c517, vars: {}, profile: weather_profile, target: dev, version: 1.12.6
+[0m10:22:51.153075 [debug] [MainThread]: Partial parsing enabled: 152 files deleted, 152 files added, 0 files changed.
+[0m10:22:51.153075 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\create.sql
+[0m10:22:51.153075 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\schema.yml
+[0m10:22:51.161782 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\schema.sql
+[0m10:22:51.162307 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\merge.sql
+[0m10:22:51.162843 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\merge.sql
+[0m10:22:51.162843 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\escape_single_quotes.sql
+[0m10:22:51.162843 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\external_location.sql
+[0m10:22:51.165296 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\column\columns_spec_ddl.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\clone\create_or_replace_clone.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\merge_config_validation.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\rename_intermediate.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\validate_sql.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\rename.sql
+[0m10:22:51.167045 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\replace.sql
+[0m10:22:51.172091 [debug] [MainThread]: Partial parsing: added file: weather_medallion://seeds\cities.csv
+[0m10:22:51.172616 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\dim_date.sql
+[0m10:22:51.172616 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\rename.sql
+[0m10:22:51.172616 [debug] [MainThread]: Partial parsing: added file: dbt://macros\generic_test_sql\relationships.sql
+[0m10:22:51.174649 [debug] [MainThread]: Partial parsing: added file: dbt://tests\generic\builtin.sql
+[0m10:22:51.174649 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\upstream.sql
+[0m10:22:51.174649 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\view\replace.sql
+[0m10:22:51.176655 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\datediff.sql
+[0m10:22:51.176655 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\replace.sql
+[0m10:22:51.176655 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\table.sql
+[0m10:22:51.179427 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\staging\stg_weather_hourly.sql
+[0m10:22:51.179427 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\runtime.sql
+[0m10:22:51.179427 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\seeds\seed.sql
+[0m10:22:51.179427 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\snapshot_helper.sql
+[0m10:22:51.182722 [debug] [MainThread]: Partial parsing: added file: dbt://macros\generic_test_sql\unique.sql
+[0m10:22:51.182722 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\drop.sql
+[0m10:22:51.182722 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\literal.sql
+[0m10:22:51.184732 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\create_backup.sql
+[0m10:22:51.184732 [debug] [MainThread]: Partial parsing: added file: dbt://docs\overview.md
+[0m10:22:51.184732 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\date.sql
+[0m10:22:51.187310 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\apply_grants.sql
+[0m10:22:51.187310 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\view\create.sql
+[0m10:22:51.187310 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\concat.sql
+[0m10:22:51.189314 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\persist_docs.sql
+[0m10:22:51.189314 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\show.sql
+[0m10:22:51.190820 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\drop_backup.sql
+[0m10:22:51.191494 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\view.sql
+[0m10:22:51.192513 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\drop.sql
+[0m10:22:51.193027 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\functions\aggregate.sql
+[0m10:22:51.194775 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\is_incremental.sql
+[0m10:22:51.195364 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\listagg.sql
+[0m10:22:51.195364 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\array_append.sql
+[0m10:22:51.195364 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\persist_docs.sql
+[0m10:22:51.197383 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\date.sql
+[0m10:22:51.197383 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\array_construct.sql
+[0m10:22:51.197383 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\date_trunc.sql
+[0m10:22:51.199392 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\table_function.sql
+[0m10:22:51.199392 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\normalize.sql
+[0m10:22:51.199392 [debug] [MainThread]: Partial parsing: added file: weather_medallion://tests\assert_daily_agg_matches_fact.sql
+[0m10:22:51.199392 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\create.sql
+[0m10:22:51.202809 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\functions\function.sql
+[0m10:22:51.202809 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\tests\unit.sql
+[0m10:22:51.202809 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\snapshots\helpers.sql
+[0m10:22:51.204826 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\hooks.sql
+[0m10:22:51.204826 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\exposures.yml
+[0m10:22:51.204826 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\alter.sql
+[0m10:22:51.204826 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\fct_weather_hourly.sql
+[0m10:22:51.208180 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\incremental.sql
+[0m10:22:51.208180 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\tests\where_subquery.sql
+[0m10:22:51.208180 [debug] [MainThread]: Partial parsing: added file: dbt://macros\etc\datetime.sql
+[0m10:22:51.210192 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\table\replace.sql
+[0m10:22:51.210838 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\hash.sql
+[0m10:22:51.210838 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\date_spine.sql
+[0m10:22:51.210838 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\functions\helpers.sql
+[0m10:22:51.212857 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\any_value.sql
+[0m10:22:51.213374 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\silver\schema.yml
+[0m10:22:51.215393 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\merge_defaults.sql
+[0m10:22:51.215393 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\clone\can_clone_table.sql
+[0m10:22:51.215393 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\data_types.sql
+[0m10:22:51.217403 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\lastday.sql
+[0m10:22:51.217403 [debug] [MainThread]: Partial parsing: added file: dbt://macros\python_model\python.sql
+[0m10:22:51.217403 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\cast.sql
+[0m10:22:51.219412 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\adapters.sql
+[0m10:22:51.220461 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\split_part.sql
+[0m10:22:51.221173 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\replace.sql
+[0m10:22:51.222733 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\snapshots\snapshot_merge.sql
+[0m10:22:51.222733 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\intersect.sql
+[0m10:22:51.223749 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\listagg.sql
+[0m10:22:51.224847 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\agg_weather_daily.sql
+[0m10:22:51.224847 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\cast_bool_to_text.sql
+[0m10:22:51.225860 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\view\drop.sql
+[0m10:22:51.225860 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\configs.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\relation.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\table\create.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\silver\weather_hourly.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\table.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\agg_weather_monthly.sql
+[0m10:22:51.227924 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\any_value.sql
+[0m10:22:51.232859 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\metadata.sql
+[0m10:22:51.232859 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\length.sql
+[0m10:22:51.234343 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\column_helpers.sql
+[0m10:22:51.234343 [debug] [MainThread]: Partial parsing: added file: dbt://macros\generic_test_sql\accepted_values.sql
+[0m10:22:51.234343 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\external.sql
+[0m10:22:51.237423 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\dateadd.sql
+[0m10:22:51.238060 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\safe_cast.sql
+[0m10:22:51.238060 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\validation_helper.sql
+[0m10:22:51.238060 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\generate_series.sql
+[0m10:22:51.240270 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\strategies.sql
+[0m10:22:51.240270 [debug] [MainThread]: Partial parsing: added file: dbt://macros\generic_test_sql\not_null.sql
+[0m10:22:51.240270 [debug] [MainThread]: Partial parsing: added file: dbt://macros\get_custom_name\get_latest_version_pointer_alias.sql
+[0m10:22:51.242972 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\seed.sql
+[0m10:22:51.242972 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\datediff.sql
+[0m10:22:51.242972 [debug] [MainThread]: Partial parsing: added file: weather_medallion://tests\assert_no_future_hourly_weather.sql
+[0m10:22:51.244489 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\table\drop.sql
+[0m10:22:51.244489 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\generate_series.sql
+[0m10:22:51.246002 [debug] [MainThread]: Partial parsing: added file: dbt://macros\etc\statement.sql
+[0m10:22:51.246002 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\bool_or.sql
+[0m10:22:51.247514 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\clone\clone.sql
+[0m10:22:51.247514 [debug] [MainThread]: Partial parsing: added file: dbt://macros\get_custom_name\get_custom_database.sql
+[0m10:22:51.249530 [debug] [MainThread]: Partial parsing: added file: weather_medallion://tests\assert_relative_humidity_range.sql
+[0m10:22:51.250179 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\snapshots\strategies.sql
+[0m10:22:51.250179 [debug] [MainThread]: Partial parsing: added file: dbt://macros\unit_test_sql\get_fixture_sql.sql
+[0m10:22:51.250179 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\materialized_view\refresh.sql
+[0m10:22:51.252698 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\intermediate\int_weather_deduped.sql
+[0m10:22:51.252698 [debug] [MainThread]: Partial parsing: added file: dbt://macros\get_custom_name\get_custom_alias.sql
+[0m10:22:51.252698 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\columns.sql
+[0m10:22:51.255240 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\equals.sql
+[0m10:22:51.255935 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\materialized_view.sql
+[0m10:22:51.255935 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\dateadd.sql
+[0m10:22:51.258008 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\schema.sql
+[0m10:22:51.258008 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\position.sql
+[0m10:22:51.258008 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\catalog.sql
+[0m10:22:51.260012 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\staging\source.yml
+[0m10:22:51.260012 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\delete_insert.sql
+[0m10:22:51.260012 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\hooks.sql
+[0m10:22:51.262739 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\right.sql
+[0m10:22:51.262739 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\materializations\incremental_strategy\microbatch.sql
+[0m10:22:51.262739 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\columns.sql
+[0m10:22:51.262739 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\table\rename.sql
+[0m10:22:51.265263 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\except.sql
+[0m10:22:51.266304 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\snapshots\snapshot.sql
+[0m10:22:51.266304 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\functions\scalar.sql
+[0m10:22:51.266304 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\tests\helpers.sql
+[0m10:22:51.266304 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\flights.sql
+[0m10:22:51.269112 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\timestamps.sql
+[0m10:22:51.269749 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\models\incremental\on_schema_change.sql
+[0m10:22:51.269749 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\view\rename.sql
+[0m10:22:51.269749 [debug] [MainThread]: Partial parsing: added file: weather_medallion://models\gold\dim_city.sql
+[0m10:22:51.272561 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\seeds\helpers.sql
+[0m10:22:51.272561 [debug] [MainThread]: Partial parsing: added file: dbt_duckdb://macros\utils\splitpart.sql
+[0m10:22:51.272561 [debug] [MainThread]: Partial parsing: added file: dbt://macros\get_custom_name\get_custom_schema.sql
+[0m10:22:51.272561 [debug] [MainThread]: Partial parsing: added file: dbt://macros\materializations\tests\test.sql
+[0m10:22:51.272561 [debug] [MainThread]: Partial parsing: added file: dbt://macros\relations\create_intermediate.sql
+[0m10:22:51.276733 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\freshness.sql
+[0m10:22:51.276733 [debug] [MainThread]: Partial parsing: added file: dbt://macros\adapters\indexes.sql
+[0m10:22:51.276733 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\array_concat.sql
+[0m10:22:51.279099 [debug] [MainThread]: Partial parsing: added file: dbt://macros\utils\last_day.sql
+[0m10:22:51.279099 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/external_location.sql
+[0m10:22:51.279099 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/merge_config_validation.sql
+[0m10:22:51.281109 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/date.sql
+[0m10:22:51.281109 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/seeds/helpers.sql
+[0m10:22:51.283053 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/silver/weather_hourly.sql
+[0m10:22:51.283053 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/array_construct.sql
+[0m10:22:51.283053 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/literal.sql
+[0m10:22:51.286130 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/materialized_view.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/clone/can_clone_table.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/except.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/clone/create_or_replace_clone.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/equals.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/date_trunc.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/upstream.sql
+[0m10:22:51.286671 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/table/drop.sql
+[0m10:22:51.291318 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/validate_sql.sql
+[0m10:22:51.291318 [debug] [MainThread]: Partial parsing: deleted file: dbt://docs/overview.md
+[0m10:22:51.292826 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/metadata.sql
+[0m10:22:51.292826 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/create_backup.sql
+[0m10:22:51.292826 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/replace.sql
+[0m10:22:51.294843 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/functions/helpers.sql
+[0m10:22:51.294843 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/snapshots/snapshot_merge.sql
+[0m10:22:51.294843 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/validation_helper.sql
+[0m10:22:51.296376 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/cast.sql
+[0m10:22:51.296376 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/functions/aggregate.sql
+[0m10:22:51.298706 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/generic_test_sql/unique.sql
+[0m10:22:51.299421 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/configs.sql
+[0m10:22:51.299421 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/generate_series.sql
+[0m10:22:51.299421 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/merge.sql
+[0m10:22:51.301443 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/delete_insert.sql
+[0m10:22:51.301443 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/alter.sql
+[0m10:22:51.302955 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/hooks.sql
+[0m10:22:51.302955 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/safe_cast.sql
+[0m10:22:51.302955 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/table_function.sql
+[0m10:22:51.302955 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/columns.sql
+[0m10:22:51.305476 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/create.sql
+[0m10:22:51.305476 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/etc/datetime.sql
+[0m10:22:51.307109 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/snapshots/snapshot.sql
+[0m10:22:51.307109 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/escape_single_quotes.sql
+[0m10:22:51.307109 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/functions/scalar.sql
+[0m10:22:51.307109 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://seeds/cities.csv
+[0m10:22:51.310028 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/rename.sql
+[0m10:22:51.310533 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/date.sql
+[0m10:22:51.311796 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/unit_test_sql/get_fixture_sql.sql
+[0m10:22:51.312818 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/incremental.sql
+[0m10:22:51.312818 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/lastday.sql
+[0m10:22:51.312818 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/view/replace.sql
+[0m10:22:51.314570 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/hash.sql
+[0m10:22:51.315216 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/snapshots/strategies.sql
+[0m10:22:51.315216 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/flights.sql
+[0m10:22:51.315216 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/external.sql
+[0m10:22:51.317231 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/timestamps.sql
+[0m10:22:51.318830 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/adapters.sql
+[0m10:22:51.318830 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/datediff.sql
+[0m10:22:51.320852 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/array_concat.sql
+[0m10:22:51.320852 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/split_part.sql
+[0m10:22:51.320852 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/any_value.sql
+[0m10:22:51.322862 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/gold/dim_date.sql
+[0m10:22:51.322862 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://tests/assert_no_future_hourly_weather.sql
+[0m10:22:51.322862 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/dateadd.sql
+[0m10:22:51.324379 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/view.sql
+[0m10:22:51.324379 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/gold/agg_weather_monthly.sql
+[0m10:22:51.325896 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/array_append.sql
+[0m10:22:51.326446 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/relation.sql
+[0m10:22:51.327474 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/view/rename.sql
+[0m10:22:51.327474 [debug] [MainThread]: Partial parsing: deleted file: dbt://tests/generic/builtin.sql
+[0m10:22:51.329328 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/gold/fct_weather_hourly.sql
+[0m10:22:51.329328 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/seed.sql
+[0m10:22:51.329328 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/snapshots/helpers.sql
+[0m10:22:51.329328 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/view/create.sql
+[0m10:22:51.332862 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/merge_defaults.sql
+[0m10:22:51.332862 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/python_model/python.sql
+[0m10:22:51.332862 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/tests/unit.sql
+[0m10:22:51.334882 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/drop_backup.sql
+[0m10:22:51.334882 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/columns.sql
+[0m10:22:51.334882 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/splitpart.sql
+[0m10:22:51.336890 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/create.sql
+[0m10:22:51.337899 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/listagg.sql
+[0m10:22:51.337899 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental_strategy/microbatch.sql
+[0m10:22:51.337899 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/table.sql
+[0m10:22:51.337899 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/intermediate/int_weather_deduped.sql
+[0m10:22:51.341011 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/etc/statement.sql
+[0m10:22:51.341011 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/date_spine.sql
+[0m10:22:51.342524 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/table/rename.sql
+[0m10:22:51.343149 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/gold/dim_city.sql
+[0m10:22:51.343149 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/get_custom_name/get_custom_alias.sql
+[0m10:22:51.345166 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/tests/test.sql
+[0m10:22:51.346173 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/functions/function.sql
+[0m10:22:51.346173 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/generic_test_sql/relationships.sql
+[0m10:22:51.346173 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/get_custom_name/get_custom_database.sql
+[0m10:22:51.348220 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://tests/assert_daily_agg_matches_fact.sql
+[0m10:22:51.348220 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/view/drop.sql
+[0m10:22:51.348220 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/persist_docs.sql
+[0m10:22:51.350183 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/right.sql
+[0m10:22:51.350183 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/concat.sql
+[0m10:22:51.350183 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/position.sql
+[0m10:22:51.352706 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/table/create.sql
+[0m10:22:51.352706 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/bool_or.sql
+[0m10:22:51.352706 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/hooks.sql
+[0m10:22:51.355519 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/replace.sql
+[0m10:22:51.355519 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/rename_intermediate.sql
+[0m10:22:51.355519 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/clone/clone.sql
+[0m10:22:51.357526 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/catalog.sql
+[0m10:22:51.357526 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/intersect.sql
+[0m10:22:51.358566 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/show.sql
+[0m10:22:51.359211 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/replace.sql
+[0m10:22:51.359211 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/tests/where_subquery.sql
+[0m10:22:51.359211 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/schema.sql
+[0m10:22:51.359211 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/create_intermediate.sql
+[0m10:22:51.359211 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/freshness.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/last_day.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/any_value.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://tests/assert_relative_humidity_range.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/incremental.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/data_types.sql
+[0m10:22:51.362565 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/get_custom_name/get_custom_schema.sql
+[0m10:22:51.366771 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/staging/stg_weather_hourly.sql
+[0m10:22:51.366771 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/materializations/table.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/persist_docs.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/normalize.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/utils/dateadd.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/schema.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/column_helpers.sql
+[0m10:22:51.368817 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/length.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: weather_medallion://models/gold/agg_weather_daily.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/strategies.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/indexes.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/datediff.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/merge.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/table/replace.sql
+[0m10:22:51.373854 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/runtime.sql
+[0m10:22:51.379165 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/cast_bool_to_text.sql
+[0m10:22:51.380150 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/on_schema_change.sql
+[0m10:22:51.380846 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/column/columns_spec_ddl.sql
+[0m10:22:51.380846 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/refresh.sql
+[0m10:22:51.382859 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/tests/helpers.sql
+[0m10:22:51.382859 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/generate_series.sql
+[0m10:22:51.382859 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/models/incremental/is_incremental.sql
+[0m10:22:51.382859 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/adapters/apply_grants.sql
+[0m10:22:51.385385 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/generic_test_sql/accepted_values.sql
+[0m10:22:51.385385 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/get_custom_name/get_latest_version_pointer_alias.sql
+[0m10:22:51.385385 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/materializations/seeds/seed.sql
+[0m10:22:51.385385 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/drop.sql
+[0m10:22:51.385385 [debug] [MainThread]: Partial parsing: deleted file: dbt_duckdb://macros/snapshot_helper.sql
+[0m10:22:51.389597 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/generic_test_sql/not_null.sql
+[0m10:22:51.389597 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/utils/listagg.sql
+[0m10:22:51.389597 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/rename.sql
+[0m10:22:51.389597 [debug] [MainThread]: Partial parsing: deleted file: dbt://macros/relations/materialized_view/drop.sql
+[0m10:22:51.432677 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+'dbt_duckdb://macros\\snapshot_helper.sql'
+[0m10:22:51.438229 [error] [MainThread]: Traceback (most recent call last):
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 198, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 144, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 295, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 340, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 387, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 403, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\cli\requires.py", line 478, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\parser\manifest.py", line 2671, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\parser\manifest.py", line 360, in get_full_manifest
+    manifest = loader.load()
+               ^^^^^^^^^^^^^
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\parser\manifest.py", line 433, in load
+    self.load_and_parse_macros(project_parser_files)
+  File "D:\Develop\Anaconda\envs\de_weather\Lib\site-packages\dbt\parser\manifest.py", line 852, in load_and_parse_macros
+    block = FileBlock(self.manifest.files[file_id])
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'dbt_duckdb://macros\\snapshot_helper.sql'
+
+[0m10:22:51.440353 [debug] [MainThread]: Command `python -m dbt.cli.main test` failed at 10:22:51.439822 after 4.01 seconds
+[0m10:22:51.441392 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673CFB550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023673C2EA10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023674538D50>]}
+[0m10:22:51.442983 [debug] [MainThread]: Flushing usage events
+[0m10:22:51.452773 [debug] [MainThread]: An error was encountered while trying to flush usage events

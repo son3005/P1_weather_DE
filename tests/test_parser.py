@@ -1,5 +1,7 @@
+
 from src.parser import flatten_weather_json
-import pytest
+
+
 # 1. Test trường hợp thiếu biến thời tiết (API không trả về 'precipitation')
 def test_flatten_missing_variable():
     raw_data = {
