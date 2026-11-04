@@ -1,6 +1,22 @@
 version: 2
 
 models:
+  - name: dim_city
+    description: "Bảng chiều thành phố"
+    columns:
+      - name: city_code
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: "Bảng chiều thời gian (ngày)"
+    columns:
+      - name: date_id
+        tests:
+          - unique
+          - not_null
+
   - name: fct_weather_hourly
     description: "Bảng sự kiện thời tiết theo giờ tầng Gold"
     columns:
