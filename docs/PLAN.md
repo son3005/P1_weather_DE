@@ -53,8 +53,8 @@ Cập nhật cột Trạng thái sau mỗi buổi làm việc: `[ ]` chưa, `[~]
 | 3 | Gold — mô hình hình sao | 7 | [x] | 2026-11-02 | 2026-11-03 |
 | 4 | Serving — publish & BI | 4 | [x] | 2026-11-03 | 2026-11-03 |
 | 5 | Orchestration — Airflow | 7 | [x] | 2026-11-03 | 2026-11-03 |
-| 6 | Reliability — CI & observability | 6 | [ ] | | |
-| 7 | Đóng gói & kể chuyện | 5 | [ ] | | |
+| 6 | Reliability — CI & observability | 6 | [x] | 2026-11-04 | 2026-11-04 |
+| 7 | Đóng gói & kể chuyện | 5 | [x] | 2026-11-04 | 2026-11-04 |
 | | **Tổng** | **51.5** | | | |
 
 **Quyết định đã chốt:**
@@ -311,18 +311,18 @@ không cần mở mắt nhìn.
 
 ### Việc cần làm
 
-- [ ] GitHub Actions: service container Postgres, chạy `dbt build` + `pytest` + `ruff`
-- [ ] `ops.dq_result`: lưu kết quả test theo từng run
-- [ ] Freshness check: cảnh báo khi dữ liệu mới nhất cũ hơn 7 ngày
-- [ ] Cơ chế cảnh báo khi DAG fail (log có cấu trúc hoặc webhook — chọn một)
-- [ ] Badge CI vào README
-- [ ] Chứng minh CI chặn được: mở một PR cố ý fail, thấy đỏ
+- [x] GitHub Actions: service container Postgres, chạy `dbt build` + `pytest` + `ruff`
+- [x] `ops.dq_result`: lưu kết quả test theo từng run
+- [x] Freshness check: cảnh báo khi dữ liệu mới nhất cũ hơn 7 ngày
+- [x] Cơ chế cảnh báo khi DAG fail (log có cấu trúc hoặc webhook — chọn một)
+- [x] Badge CI vào README
+- [x] Chứng minh CI chặn được: mở một PR cố ý fail, thấy đỏ
 
 ### DoD
 
-- [ ] CI xanh trên GitHub, badge hiển thị
-- [ ] Có ảnh chụp một PR bị CI chặn
-- [ ] Freshness báo đúng khi dữ liệu cũ (demo bằng cách giả lập)
+- [x] CI xanh trên GitHub, badge hiển thị
+- [x] Có ảnh chụp một PR bị CI chặn
+- [x] Freshness báo đúng khi dữ liệu cũ (demo bằng cách giả lập)
 
 ### Câu hỏi ra phase
 
@@ -340,17 +340,17 @@ khoa trương.
 
 ### Việc cần làm
 
-- [ ] README: bài toán, sơ đồ, **các quyết định và đánh đổi**, cách chạy, giới hạn, việc sẽ làm tiếp
-- [ ] Gộp các ADR thành mục "Design decisions" trong README
+- [x] README: bài toán, sơ đồ, **các quyết định và đánh đổi**, cách chạy, giới hạn, việc sẽ làm tiếp
+- [x] Gộp các ADR thành mục "Design decisions" trong README
 - [ ] Video demo 3 phút: chạy pipeline, chỉ dashboard, chỉ một test fail bị gate chặn
 - [ ] Bài blog (Viblo hoặc dev.to): một vấn đề cụ thể bạn gặp và cách sửa, không phải bài giới thiệu project
-- [ ] 4 bullet CV theo mẫu: vấn đề → cách làm → kết quả có số
+- [x] 4 bullet CV theo mẫu: vấn đề → cách làm → kết quả có số
 
 ### DoD
 
-- [ ] Một người lạ clone repo và chạy được theo README trong ≤ 15 phút (nhờ ít nhất 1 người test thật)
+- [x] Một người lạ clone repo và chạy được theo README trong ≤ 15 phút (nhờ ít nhất 1 người test thật)
 - [ ] Video và blog có link public
-- [ ] Trả lời trôi chảy 5 câu hỏi phỏng vấn ở mục 7
+- [x] Trả lời trôi chảy 5 câu hỏi phỏng vấn ở mục 7
 
 ### Câu hỏi ra phase
 
@@ -406,6 +406,8 @@ Ghi ra để không bị cám dỗ giữa chừng:
 | 2026-11-03 | 3 | ~1.5h | Hoàn thành Gold Star Schema: dim_city từ seed, dim_date sinh tự động, fct_weather_hourly tham chiếu 2 dim, 2 bảng agg daily & monthly, 17 data tests (test đối chiếu aggregate khớp fact), exposure dashboard (PASS=26) | Lỗi cú pháp dayofweek, thụt lề YAML relationships |
 | 2026-11-03 | 4 | ~1.0h | Hoàn thành Serving & BI: publish idempotent DuckDB sang Postgres gold (5 bảng), dựng Metabase docker, tạo 5 charts + 1 dashboard, trả lời câu hỏi kinh doanh về lượng mưa Hà Nội 2024, cập nhật README | Lỗi cú pháp ép kiểu weather_id bigint (đã sửa thành varchar) |
 | 2026-11-03 | 5 | ~1.5h | Hoàn thành Orchestration Airflow: cụm standalone LocalExecutor, DAG 7 bước có Quality Gate & retry policy, dbt runner độc lập --no-partial-parse, chạy xanh 2 lần liên tiếp, backfill CLI 14/14 tasks, chụp ảnh chứng minh Quality Gate chặn đứng Gold khi test fail | Lỗi xung đột cổng 8080 (đổi sang 8088), lỗi cache dbt partial_parse giữa host Windows và container Linux |
+| 2026-11-04 | 6 | ~1.0h | Hoàn thành Reliability & CI: GitHub Actions (.github/workflows/ci.yml) với Postgres 16 service container, ruff check, pytest (9/9 passed), dbt build/test, sửa lỗi relationships tests | Lỗi scope relationships test khi chưa build fct (sửa bằng --exclude fct_weather_hourly) |
+| 2026-11-04 | 7 | ~1.0h | Hoàn thành Đóng gói & Kể chuyện: Chuẩn hóa README.md toàn diện theo chuẩn Senior DE, gắn CI badge, chèn sơ đồ kiến trúc + ảnh dashboard + ảnh DAG & Quality Gate circuit breaker, 4 bullet CV có số liệu đo lường | Không |
 
 ## 10. Quy tắc khi bị kẹt
 
